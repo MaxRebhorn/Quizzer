@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "quizzer",
+	"name": "Quizzer",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"description": "A simple plugin that allows you to create quizzes inside your Zettels to test yourself.",
+	"author": "Max Rebhorn",
+	"authorUrl": "",
+	"fundingUrl": "",
+	"isDesktopOnly": true
 }

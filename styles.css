@@ -3,6 +3,266 @@
 This CSS file will be included with your plugin, and
 available in the app when your plugin is enabled.
 
-If your plugin does not need CSS, delete this file.
-
 */
+
+/* Quizzer Styles */
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.config-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.config-item label {
+    font-weight: bold;
+}
+
+.colors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quiz-start-btn {
+    background: linear-gradient(135deg, var(--quiz-button-primary, #667eea) 0%, var(--quiz-button-primary, #764ba2) 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 16px;
+    align-self: flex-start;
+}
+
+.quiz-start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.quiz-option {
+    display: block;
+    margin-bottom: 0.5em;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--background-primary);
+    border: 2px solid var(--background-modifier-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.quiz-option:hover {
+    border-color: var(--interactive-accent);
+    background: var(--background-primary-alt);
+}
+
+.quiz-input {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--background-primary);
+    border: 2px solid var(--background-modifier-border);
+    font-size: 16px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+}
+
+.quiz-input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+.quiz-input.option-correct {
+    border-color: var(--quiz-correct-color, #22c55e);
+    background-color: rgba(34, 197, 94, 0.1);
+}
+
+.quiz-input.option-wrong {
+    border-color: var(--quiz-wrong-color, #ef4444);
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.quiz-option span {
+    transition: background-color 1s ease, color 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.option-correct {
+    background-color: var(--quiz-correct-color, rgba(34, 197, 94, 0.8)) !important;
+    color: white !important;
+    box-shadow: 0 0 10px var(--quiz-correct-color, rgba(34, 197, 94, 0.5));
+}
+
+.option-wrong {
+    background-color: var(--quiz-wrong-color, rgba(239, 68, 68, 0.8)) !important;
+    color: white !important;
+    box-shadow: 0 0 10px var(--quiz-wrong-color, rgba(239, 68, 68, 0.5));
+}
+
+.quiz-question {
+    background: linear-gradient(135deg, var(--quiz-question-bg, #f093fb) 0%, var(--quiz-question-bg, #f5576c) 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+}
+
+.quiz-progress {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.quiz-confirm-btn {
+    background: linear-gradient(135deg, var(--quiz-button-primary, #4facfe) 0%, var(--quiz-button-primary, #00f2fe) 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 16px;
+}
+
+.quiz-confirm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+}
+
+.quiz-confirm-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.quiz-results {
+    background: linear-gradient(135deg, var(--quiz-results-bg, #a8edea) 0%, var(--quiz-results-bg, #fed6e3) 100%);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(168, 237, 234, 0.3);
+}
+
+.quiz-results h4 {
+    margin-bottom: 16px;
+    color: var(--text-normal);
+}
+
+.quiz-score {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-accent);
+    margin-bottom: 16px;
+}
+
+.results-list {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.result-item {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--background-primary);
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.result-item h5 {
+    margin-bottom: 8px;
+}
+
+.result-option {
+    margin: 4px 0;
+}
+
+.quiz-restart-btn {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: var(--text-normal);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-top: 16px;
+}
+
+.quiz-next-btn {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: var(--text-normal);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-top: 16px;
+}
+
+.quiz-next-btn:hover {
+    transform: translateY(-2px);
+}
+
+.quiz-weight-info {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--background-primary-alt);
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+    font-weight: bold;
+    text-align: center;
+}
+
+.quiz-explanation {
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--background-primary-alt);
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.explanation-text {
+    font-style: italic;
+    white-space: pre-wrap;
+}
+
+.quiz-motivational {
+    margin-top: 20px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--quiz-correct-color, rgba(34, 197, 94, 0.2)) 0%, var(--quiz-correct-color, rgba(34, 197, 94, 0.4)) 100%);
+    border-radius: 8px;
+    border: 1px solid var(--quiz-correct-color, rgba(34, 197, 94, 0.5));
+}
+
+.motivational-text {
+    font-weight: bold;
+    color: var(--quiz-correct-color, #22c55e);
+    text-align: center;
+    white-space: pre-wrap;
+}
