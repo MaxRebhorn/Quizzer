@@ -1,18 +1,28 @@
-import {App, Editor, MarkdownView, Modal, Notice, Plugin} from 'obsidian';
-import {DEFAULT_SETTINGS, MyPluginSettings, SampleSettingTab} from "./settings";
+import { App, Editor, MarkdownView, Modal, Notice, Plugin } from 'obsidian';
+import { DEFAULT_SETTINGS, MyPluginSettings, SampleSettingTab } from "./settings";
+import { QuizParserFixed } from "./quizParser"; // Import the fixed QuizParser class
+import { QuizView } from "./quizView";
 
-// Remember to rename these classes and interfaces!
-
-export default class MyPlugin extends Plugin {
+export default class HelloWorldPlugin extends Plugin {
 	settings: MyPluginSettings;
 
 	async onload() {
+		console.log("[Quizzer] onload called");
 		await this.loadSettings();
 
+		// Register the quiz view
+		this.registerView("quiz-view", (leaf) => new QuizView(leaf, this.app, this));
+
+		this.addRibbonIcon('dice', 'Greet', () => {
+			new Notice('Hello, world!');
+		});
+
+
+		
 		// This creates an icon in the left ribbon.
-		this.addRibbonIcon('dice', 'Sample', (evt: MouseEvent) => {
-			// Called when the user clicks the icon.
-			new Notice('This is a notice!');
+		this.addRibbonIcon('dice', 'Quizzer', (evt: MouseEvent) => {
+			// Open the quiz view in a new leaf
+			this.app.workspace.getLeaf(true).setViewState({ type: "quiz-view" });
 		});
 
 		// This adds a status bar item to the bottom of the app. Does not work on mobile apps.
@@ -35,6 +45,18 @@ export default class MyPlugin extends Plugin {
 				editor.replaceSelection('Sample editor command');
 			}
 		});
+		this.addCommand({
+			id: "test-parser",
+			name: "Test Quiz Parser",
+			callback: async () => {
+				console.log("[Quizzer] running test-parser");
+				const parser = new QuizParserFixed(this.app, this.app.vault);
+				const notes = await parser.getNoteswithQuizTag();
+				const quizzes = await parser.extractQuizzesFromNotes(notes);
+				console.log("Test result:", quizzes);
+			}
+		});
+		console.log("[Quizzer] registered test-parser command");
 		// This adds a complex command that can check whether the current state of the app allows execution of the command
 		this.addCommand({
 			id: 'open-modal-complex',
@@ -82,18 +104,25 @@ export default class MyPlugin extends Plugin {
 	}
 }
 
+
+
+
+
+
+
+
 class SampleModal extends Modal {
 	constructor(app: App) {
 		super(app);
 	}
 
 	onOpen() {
-		let {contentEl} = this;
+		let { contentEl } = this;
 		contentEl.setText('Woah!');
 	}
 
 	onClose() {
-		const {contentEl} = this;
+		const { contentEl } = this;
 		contentEl.empty();
 	}
 }
