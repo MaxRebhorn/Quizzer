@@ -1,7 +1,7 @@
 {
 	"id": "quizzer",
 	"name": "Quizzer",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.15.0",
 	"description": "A simple plugin that allows you to create quizzes inside your Zettels to test yourself.",
 	"author": "Max Rebhorn",
