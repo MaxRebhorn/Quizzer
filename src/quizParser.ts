@@ -45,7 +45,7 @@ export class QuizParserFixed {
             let match: RegExpExecArray | null;
             while ((match = regex.exec(content)) !== null) {
                 const blockText = match[1];
-                const quiz = this.parseQuizBlock(blockText, content);
+                const quiz = this.parseQuizBlock(blockText || '', content);
                 if (quiz) {
                     console.log("Parsed quiz:", quiz);
                     quizzes.push(quiz);

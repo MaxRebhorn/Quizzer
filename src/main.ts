@@ -1,17 +1,17 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin } from 'obsidian';
-import { DEFAULT_SETTINGS, MyPluginSettings, SampleSettingTab } from "./settings";
-import { QuizParserFixed } from "./quizParser"; // Import the fixed QuizParser class
-import { QuizView } from "./quizView";
+import{App, Editor, MarkdownView, Modal, Notice, Plugin} from 'obsidian';
+import {DEFAULT_SETTINGS, MyPluginSettings, SampleSettingTab}from "./settings";
+import {QuizParserFixed}from "./quizParser"; // Import the fixed QuizParser class
+import { QuizView}from "./quizView";
 
 export default class HelloWorldPlugin extends Plugin {
-	settings: MyPluginSettings;
+settings: MyPluginSettings;
 
-	async onload() {
+async onload() {
 		console.log("[Quizzer] onload called");
 		await this.loadSettings();
 
 		// Register the quiz view
-		this.registerView("quiz-view", (leaf) => new QuizView(leaf, this.app, this));
+		this.registerView("quiz-view", (leaf) => new QuizView(leaf, this));
 
 		this.addRibbonIcon('dice', 'Greet', () => {
 			new Notice('Hello, world!');

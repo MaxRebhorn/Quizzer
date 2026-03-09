@@ -1,6 +1,6 @@
 export interface BaseQuestion {
-    type: string;
-    question: string;
+	type: string;
+question: string;
 }
 
 export interface QuizOption {
@@ -22,5 +22,6 @@ export interface InputQuestion extends BaseQuestion {
     fuzzy: boolean; // enable fuzzy matching
     explanation?: string;
 }
+
 
 export type Question = MultipleChoiceQuestion | InputQuestion;
